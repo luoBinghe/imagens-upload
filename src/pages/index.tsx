@@ -71,13 +71,9 @@ export default function Home(): JSX.Element {
     return form
   }, [data]);
 
-  formattedData
-
-
   return (
     <>
       <Header />
-
       <Box maxW={1120} px={20} mx="auto" my={20}>
         <CardList cards={formattedData} />
         { isLoading && <Loading />}
