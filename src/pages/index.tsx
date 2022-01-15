@@ -35,7 +35,6 @@ const dataT = {
             id: "295991069654385154"
         },
       ],
-      after: "295991160078336512"
     }
   ]
 }
@@ -60,18 +59,27 @@ export default function Home(): JSX.Element {
       getNextPageParam: (after) => after !== null ? after : null
     });
 
-  const formattedData = useMemo(() => {
-    return dataT.pages.map((obj) => {
-      console.log(obj)
-    })
+  const formattedData: any = useMemo(() => {
+    const form = dataT.pages.map((obj) => {
+      return obj.data.map((inf) => {
+        return {
+          ...inf
+        }
+      }) 
+    }).flat()
+
+    return form
   }, [data]);
+
+  formattedData
+
 
   return (
     <>
       <Header />
 
       <Box maxW={1120} px={20} mx="auto" my={20}>
-        <CardList cards={[]} />
+        <CardList cards={formattedData} />
         { isLoading && <Loading />}
         { isError && <Error /> }
       </Box>
