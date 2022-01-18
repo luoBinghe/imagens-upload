@@ -19,16 +19,18 @@ export function CardList({ cards }: CardsProps): JSX.Element {
   const [image, setImage] = useState('')
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const handleGetUrl = () => {
-    const img = cards[0].url
-    setImage(img)
+  const handleGetUrl = (url) => {
+    setImage(url)
     onOpen()
   }
 
   return (
     <>
-      <SimpleGrid >
-        <Card data={cards[0]} viewImage={handleGetUrl} />
+      <SimpleGrid columns={3} spacing={4}>
+        {cards.map((item) => (
+          <Card key={item.id} data={item} viewImage={() => handleGetUrl(item.url)} />
+        ))
+        }
       </SimpleGrid>
 
       {isOpen && <ModalViewImage isOpen={isOpen} onClose={onClose} imgUrl={image} />}
