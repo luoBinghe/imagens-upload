@@ -46,7 +46,7 @@ export default function Home(): JSX.Element {
     });
 
   const formattedData: any = useMemo(() => {
-    const form = data.pages.map((obj) => {
+    const form = data?.pages.map((obj) => {
       return obj.data.map((inf) => {
         return {
           ...inf
