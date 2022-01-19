@@ -23,7 +23,7 @@ export function CardList({ cards }: CardsProps): JSX.Element {
     setImage(url)
     onOpen()
   }
-
+  console.log('cards', cards)
   return (
     <>
       <SimpleGrid columns={3} spacing={4}>
